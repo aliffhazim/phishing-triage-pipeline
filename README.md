@@ -15,7 +15,9 @@
 ## Executive Summary
 
 **The problem: phishing is the top breach entry point, and most of the cost is in how slowly it's triaged.**
-> Global average breach cost: $4.99M. Phishing-originated breaches take 241 days to contain. ([IBM, 2026](https://www.ibm.com/think/insights/data-matters/cost-of-a-data-breach))
+> Phishing is the most common initial attack vector into breached organizations for the fourth year running, and carries the highest average cost of any attack vector at $5.29M. ([IBM Cost of a Data Breach Report 2026](https://www.ibm.com/reports/data-breach))
+>
+> Global average breach cost: $4.99M, a record high. Average time to identify and contain: 247 days.
 >
 > SOC teams handle thousands of alerts a day; over half are false positives. ([Vectra AI](https://www.vectra.ai/topics/alert-fatigue))
 
@@ -107,10 +109,17 @@
 
 **Run it**
 
+Requires a Gmail account (with an App Password), a free VirusTotal account (for an API key), and a Slack workspace (for an Incoming Webhook URL).
+
 ```bash
 docker run -d --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n docker.n8n.io/n8nio/n8n
 ```
 Import [`workflow/`](workflow/) into n8n, configure Gmail IMAP (App Password), VirusTotal API key (Header Auth), and a Slack Incoming Webhook, then create a `phishing-reports` Gmail label to route incoming reports to the trigger.
+
+```bash
+pip install requests --break-system-packages
+```
+Paste your VirusTotal API key into `validation/validate_urls.py` (the `API_KEY` variable near the top), then run:
 
 ```bash
 python3 validation/validate_urls.py
@@ -128,7 +137,7 @@ Re-runs the 20-URL validation against live VirusTotal data.
 
 ## References
 
-- IBM Cost of a Data Breach Report 2026: https://www.ibm.com/think/insights/data-matters/cost-of-a-data-breach
+- IBM Cost of a Data Breach Report 2026: https://www.ibm.com/reports/data-breach
 - Vectra AI, "What Is Alert Fatigue?": https://www.vectra.ai/topics/alert-fatigue
 - The Hacker News, "Attackers Don't Just Send Phishing Emails, They Weaponize Your SOC's Workload": https://thehackernews.com/2026/03/attackers-dont-just-send-phishing.html
 - Dell Technologies Inc., Form 10-K FY2025 (SEC filing), cybersecurity risk factors: https://www.sec.gov/Archives/edgar/data/1571996/000157199625000034/dell-20250131.htm
