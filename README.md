@@ -16,6 +16,7 @@
 
 **The problem: phishing is the top breach entry point, and most of the cost is in how slowly it's triaged.**
 > Global average breach cost: $4.99M. Phishing-originated breaches take 241 days to contain. ([IBM, 2026](https://www.ibm.com/think/insights/data-matters/cost-of-a-data-breach))
+>
 > SOC teams handle thousands of alerts a day; over half are false positives. ([Vectra AI](https://www.vectra.ai/topics/alert-fatigue))
 
 **What I built: a SOAR pipeline that triages phishing reports without a human opening one.**
@@ -23,12 +24,16 @@
 
 **The impact: verdicts in 38.5 seconds, against an industry norm measured in hours.**
 > Manual phishing investigations run 3–12 hours at understaffed SOCs. ([The Hacker News, 2026](https://thehackernews.com/2026/03/attackers-dont-just-send-phishing.html))
+>
 > 10/10 real phishing URLs correctly flagged. 0/10 false positives on safe domains. 20-URL validation set.
 
 **Why it matters at Dell, SLB, and Siemens Energy specifically:**
 > Dell's own FY2025 10-K names phishing and credential attacks as an active risk factor. ([SEC filing](https://www.sec.gov/Archives/edgar/data/1571996/000157199625000034/dell-20250131.htm))
+>
 > SLB frames cyberattacks as a threat to physical OT operations, not just data. ([SLB](https://www.slb.com/insights/cybersecurity-the-next-frontier-of-safety-in-oil-and-gas))
+>
 > Siemens Energy names phishing as a direct driver of risk across industrial and IIoT systems. ([Siemens Energy](https://www.siemens-energy.com/global/en/home/company/cybersecurity.html))
+>
 > These three are examples, not the limit: any company with an inbox and a SOC has this exact bottleneck.
 
 ---
